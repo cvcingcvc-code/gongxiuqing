@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Env / secrets
+.env
+*.key
+
+# Runtime data
+backend/data/uploads/*
+!backend/data/uploads/.gitkeep
+backend/data/captures/*
+!backend/data/captures/.gitkeep
+backend/data/geoip/*.xdb
+*.pcap
+*.pcapng
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log.local

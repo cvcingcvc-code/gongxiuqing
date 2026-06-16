@@ -1,0 +1,14 @@
+{
+  "_comment": "内置演示用 IP -> 归属地映射，保证离线/沙箱环境也能溯源到省份。生产环境请配置 ip2region 离线库或开启在线 API。",
+  "113.108.182.66": {"country": "中国", "province": "广东省", "city": "广州市", "isp": "电信"},
+  "221.226.13.45": {"country": "中国", "province": "江苏省", "city": "南京市", "isp": "电信"},
+  "59.110.23.88": {"country": "中国", "province": "北京市", "city": "北京市", "isp": "阿里云"},
+  "183.6.51.200": {"country": "中国", "province": "广东省", "city": "深圳市", "isp": "联通"},
+  "171.12.66.190": {"country": "中国", "province": "河南省", "city": "郑州市", "isp": "电信"},
+  "120.79.155.33": {"country": "中国", "province": "广东省", "city": "深圳市", "isp": "阿里云"},
+  "218.92.0.123": {"country": "中国", "province": "江苏省", "city": "镇江市", "isp": "电信"},
+  "45.155.205.99": {"country": "荷兰", "province": "北荷兰省", "city": "阿姆斯特丹", "isp": "Hosting"},
+  "193.32.162.10": {"country": "俄罗斯", "province": "莫斯科州", "city": "莫斯科", "isp": "Datacenter"},
+  "104.21.5.6": {"country": "美国", "province": "加利福尼亚州", "city": "旧金山", "isp": "Cloudflare"},
+  "1.94.108.77": {"country": "中国", "province": "四川省", "city": "成都市", "isp": "移动"}
+}

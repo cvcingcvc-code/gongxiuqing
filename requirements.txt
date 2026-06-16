@@ -1,0 +1,17 @@
+# Web 服务
+fastapi==0.137.1
+uvicorn[standard]==0.49.0
+python-multipart==0.0.32
+python-dotenv==1.2.2
+pydantic==2.13.4
+requests==2.34.2
+
+# Agent / 工作流 / 记忆
+langgraph==1.2.5
+langgraph-checkpoint==4.1.1
+langchain==1.3.9
+langchain-core==1.4.7
+langchain-openai==1.3.2  # 通过 OpenAI 兼容接口接入 DeepSeek
+
+# 真实抓包（可选，沙箱可不装；本机部署时需要并配合 libpcap / root 权限）
+# scapy==2.5.0

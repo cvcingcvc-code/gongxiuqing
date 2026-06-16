@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>哨兵 · 网络安全流量分析智能体</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🛡️</span>
+      <div>
+        <h1>哨兵 Sentinel</h1>
+        <p>网络安全流量分析智能体 · 检测 / 溯源 / 出报告</p>
+      </div>
+    </div>
+    <div id="status" class="status">连接中…</div>
+  </header>
+
+  <main class="layout">
+    <!-- 左侧：输入区 -->
+    <section class="panel input-panel">
+      <div class="tabs">
+        <button class="tab active" data-tab="log">📄 流量日志</button>
+        <button class="tab" data-tab="upload">📤 上传文件</button>
+        <button class="tab" data-tab="port">🔌 端口监测</button>
+      </div>
+
+      <!-- 日志粘贴 -->
+      <div class="tab-pane active" id="pane-log">
+        <label>粘贴结构化流量日志（Nginx/防火墙/CSV/JSON）</label>
+        <textarea id="logInput" placeholder="例如：113.108.182.66 - - [15/Jun/2026:10:21:07 +0800] &quot;GET /product.php?id=1' UNION SELECT ... &quot; 200 ..."></textarea>
+        <div class="samples">
+          <span>示例：</span>
+          <div id="sampleBtns"></div>
+        </div>
+      </div>
+
+      <!-- 文件上传 -->
+      <div class="tab-pane" id="pane-upload">
+        <label>上传结构化文本日志（.log/.txt/.csv/.json）</label>
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept=".log,.txt,.csv,.json,.jsonl,.ndjson" hidden />
+          <p>点击或拖拽文件到此处</p>
+          <small>⚠️ 出于安全考虑，不接收 PCAP/二进制包，请先转为结构化文本</small>
+        </div>
+        <div id="uploadInfo" class="upload-info"></div>
+      </div>
+
+      <!-- 端口监测 -->
+      <div class="tab-pane" id="pane-port">
+        <label>监测端口</label>
+        <input type="number" id="portInput" placeholder="如 80 / 443 / 3306" />
+        <label>目标主机（可选）</label>
+        <input type="text" id="hostInput" placeholder="如 demo.local" />
+        <label>抓包时长（秒）</label>
+        <input type="number" id="durInput" value="15" />
+        <p class="hint">真实抓包需在你本机部署并具备权限；当前云端环境将自动使用模拟流量演示完整流程。</p>
+      </div>
+
+      <button id="analyzeBtn" class="primary">🚀 开始分析</button>
+    </section>
+
+    <!-- 右侧：对话 + 报告 -->
+    <section class="panel chat-panel">
+      <div id="chat" class="chat"></div>
+      <div class="composer">
+        <input type="text" id="msgInput" placeholder="向哨兵提问，或附上分析指令（如：重点看是否有 SQL 注入）" />
+        <button id="sendBtn">发送</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
