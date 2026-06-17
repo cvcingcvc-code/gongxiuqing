@@ -68,6 +68,7 @@ backend/
     samples/         内置示例日志
     geoip/           内置演示 IP 映射 / ip2region xdb 位置
 frontend/            index.html · style.css · app.js
+scripts/             本机真实抓包脚本（Windows）
 tests/               单元测试
 ```
 
@@ -109,6 +110,24 @@ DEEPSEEK_API_KEY=sk-xxxxxxxx
 - **离线（推荐）**：下载 [ip2region.xdb](https://github.com/lionsoul2014/ip2region) 并设置 `IP2REGION_XDB_PATH`，再 `pip install ip2region`。
 - **在线**：保持 `GEOIP_ONLINE_ENABLED=true`，需放通 `ip-api.com` 的出网访问。
 - 二者皆无时，使用内置演示映射（覆盖示例数据）。
+
+### 在 Windows 本机真实抓包
+
+云端/沙箱环境抓不到你电脑的网卡流量，但你可以在**自己的电脑**上用 `scripts/` 目录下的脚本抓取真实流量，
+产出**结构化 CSV 文本**（不生成 .pcap 二进制），再粘贴/上传到网页里分析：
+
+```bat
+cd scripts
+capture_traffic.bat        REM 双击运行，或在终端执行
+```
+
+- 装了 **Wireshark**（自带 tshark）：脚本会列出网卡供你选择，**以管理员身份运行**可真实抓包，
+  直接输出 HTTP 方法/URL/UA 等字段，能检测 SQLi/XSS 等应用层攻击。
+- 没装 Wireshark：自动降级为「网络连接快照」模式，用系统自带的 `Get-NetTCPConnection` 轮询记录
+  所有 TCP 连接（无需安装任何工具、无需管理员权限），可用于检测端口扫描、异常外联等行为。
+
+参数：`.\capture_traffic.ps1 -Duration 60 -Interface "WLAN"`（默认抓 30 秒）。
+抓完会在当前目录生成 `traffic_capture_*.csv`，把内容粘贴进网页「流量日志」框，或直接上传该文件即可。
 
 ### 真实抓包（生产环境）
 在你自己的服务器/电脑上：`pip install scapy`，设置 `CAPTURE_BACKEND=scapy`（或 `tcpdump`），
