@@ -75,8 +75,17 @@ tests/               单元测试
 
 ## 🚀 快速开始
 
+### Windows（推荐）
+1. 确保已安装 **Python 3.10+**（安装时勾选 *Add Python to PATH*）。
+2. 在项目文件夹里**双击 `run.bat`**，或在终端执行：
+   ```bat
+   .\run.bat
+   ```
+   首次运行会自动建虚拟环境、装依赖、生成 `.env` 并启动，随后自动打开 http://localhost:8000 。
+   - 也可用 PowerShell：`.\run.ps1`（若提示禁止运行：先执行 `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`）。
+
+### Linux / macOS（或 Windows Git Bash）
 ```bash
-# 一键启动（自动建虚拟环境、装依赖、生成 .env、起服务）
 ./run.sh
 # 浏览器打开 http://localhost:8000
 ```
